@@ -1,0 +1,22 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: nimbusdesk-discovery-server
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    # Standalone registry: it does not need to register with itself
+    # or fetch a registry from another instance.
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+logging:
+  level:
+    com.netflix.eureka: WARN
+    com.netflix.discovery: WARN
